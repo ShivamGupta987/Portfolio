@@ -8,10 +8,12 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Github from "@/components/ui/github-icon";
 import GoogleDrive from "@/components/ui/google";
+import { Menu, X } from "lucide-react";
 
 export default function Portfolio() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [activeSection, setActiveSection] = useState("about");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -54,6 +56,10 @@ export default function Portfolio() {
     { name: "Leetcode", url: "https://leetcode.com/u/Shivamg987/" },
   ];
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   const renderContent = () => {
     switch (activeSection) {
       case "about":
@@ -71,7 +77,7 @@ export default function Portfolio() {
                 filter: isLoaded ? "blur(0px)" : "blur(10px)",
               }}
               transition={{ duration: 0.8 }}
-              className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-pink-600"
+              className="text-4xl font-extrabold text-transparent sm:text-5xl bg-clip-text bg-gradient-to-r from-indigo-400 to-pink-600"
             >
               Shivam Gupta
             </motion.h1>
@@ -87,7 +93,7 @@ export default function Portfolio() {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="gap-2 text-lg font-semibold text-white transition-all duration-300 border-indigo-500 hover:bg-indigo-500/20"
+                  className="gap-2 text-base font-semibold text-white transition-all duration-300 border-indigo-500 sm:text-lg hover:bg-indigo-500/20 touch-manipulation"
                 >
                   <GoogleDrive />
                   View Resume
@@ -95,7 +101,7 @@ export default function Portfolio() {
               </Link>
             </motion.div>
             <motion.p
-              className="text-lg leading-relaxed text-zinc-300"
+              className="text-base leading-relaxed sm:text-lg text-zinc-300"
               initial={{ opacity: 0, filter: "blur(10px)" }}
               animate={{
                 opacity: isLoaded ? 1 : 0,
@@ -109,7 +115,7 @@ export default function Portfolio() {
               cutting-edge technologies.
             </motion.p>
             <motion.p
-              className="text-lg leading-relaxed text-zinc-300"
+              className="text-base leading-relaxed sm:text-lg text-zinc-300"
               initial={{ opacity: 0, filter: "blur(10px)" }}
               animate={{
                 opacity: isLoaded ? 1 : 0,
@@ -122,7 +128,7 @@ export default function Portfolio() {
                 <span key={link.name}>
                   <Link
                     href={link.url}
-                    className="text-indigo-400 transition-colors border-b border-indigo-500 border-dotted hover:text-indigo-300 hover:border-indigo-300"
+                    className="text-indigo-400 transition-colors border-b border-indigo-500 border-dotted hover:text-indigo-300 hover:border-indigo-300 touch-manipulation"
                     target="_blank"
                   >
                     {link.name}
@@ -141,14 +147,14 @@ export default function Portfolio() {
               transition={{ duration: 0.5, delay: 0.6 }}
               className="pt-4"
             >
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-2 sm:gap-3">
                 {skills.map((skill) => (
                   <motion.div
                     key={skill.name}
-                    className="flex items-center gap-2 px-4 py-2 text-sm transition-all duration-300 border rounded-lg bg-zinc-900/50 border-zinc-700 text-zinc-300 hover:bg-indigo-500/10 hover:border-indigo-500"
+                    className="flex items-center gap-2 px-3 py-1.5 text-xs sm:text-sm transition-all duration-300 border rounded-lg bg-zinc-900/50 border-zinc-700 text-zinc-300 hover:bg-indigo-500/10 hover:border-indigo-500 touch-manipulation"
                     whileHover={{ scale: 1.05 }}
                   >
-                    <span className="text-sm text-indigo-400">
+                    <span className="text-xs text-indigo-400 sm:text-sm">
                       {skill.icon}
                     </span>
                     {skill.name}
@@ -167,17 +173,17 @@ export default function Portfolio() {
             className="space-y-6"
           >
             <motion.div
-              className="p-6 transition-all duration-300 border rounded-lg bg-zinc-900/50 border-zinc-800 hover:border-indigo-500"
+              className="p-4 transition-all duration-300 border rounded-lg sm:p-6 bg-zinc-900/50 border-zinc-800 hover:border-indigo-500"
               whileHover={{ scale: 1.02 }}
             >
-              <h3 className="text-2xl font-semibold text-white">
+              <h3 className="text-xl font-semibold text-white sm:text-2xl">
                 Bachelor of Engineering in Computer Science
               </h3>
-              <p className="mt-2 text-zinc-300">
+              <p className="mt-2 text-sm text-zinc-300 sm:text-base">
                 Thakur College of Engineering and Technology (Mumbai), Expected
                 Graduation: May 2026
               </p>
-              <ul className="mt-4 space-y-2 list-disc list-inside text-zinc-300">
+              <ul className="mt-4 space-y-2 text-sm list-disc list-inside text-zinc-300 sm:text-base">
                 <li>GPA: 9.21/10</li>
                 <li>
                   Relevant Coursework: Data Structures, Algorithms, Web
@@ -187,24 +193,24 @@ export default function Portfolio() {
               </ul>
             </motion.div>
             <motion.div
-              className="p-6 transition-all duration-300 border rounded-lg bg-zinc-900/50 border-zinc-800 hover:border-indigo-500"
+              className="p-4 transition-all duration-300 border rounded-lg sm:p-6 bg-zinc-900/50 border-zinc-800 hover:border-indigo-500"
               whileHover={{ scale: 1.02 }}
             >
-              <h3 className="text-2xl font-semibold text-white">
+              <h3 className="text-xl font-semibold text-white sm:text-2xl">
                 Higher Secondary School Certificate (H.S.C) - 2022
               </h3>
-              <p className="mt-2 text-zinc-300">
+              <p className="mt-2 text-sm text-zinc-300 sm:text-base">
                 Maharashtra State Board. Passed with 69.00%.
               </p>
             </motion.div>
             <motion.div
-              className="p-6 transition-all duration-300 border rounded-lg bg-zinc-900/50 border-zinc-800 hover:border-indigo-500"
+              className="p-4 transition-all duration-300 border rounded-lg sm:p-6 bg-zinc-900/50 border-zinc-800 hover:border-indigo-500"
               whileHover={{ scale: 1.02 }}
             >
-              <h3 className="text-2xl font-semibold text-white">
+              <h3 className="text-xl font-semibold text-white sm:text-2xl">
                 Secondary School Certificate (S.S.C) - 2020
               </h3>
-              <p className="mt-2 text-zinc-300">
+              <p className="mt-2 text-sm text-zinc-300 sm:text-base">
                 Maharashtra State Board. Passed with 86.20%.
               </p>
             </motion.div>
@@ -304,38 +310,40 @@ export default function Portfolio() {
             ].map((project, index) => (
               <motion.div
                 key={project.title}
-                className="p-6 transition-all duration-300 border rounded-lg bg-zinc-900/50 border-zinc-800 hover:border-indigo-500"
+                className="p-4 transition-all duration-300 border rounded-lg sm:p-6 bg-zinc-900/50 border-zinc-800 hover:border-indigo-500"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ scale: 1.02 }}
               >
-                <div className="flex items-center gap-x-3">
-                  <h3 className="text-2xl font-semibold text-white">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-y-2 gap-x-3">
+                  <h3 className="flex-1 text-xl font-semibold text-white sm:text-2xl">
                     {project.title}
                   </h3>
-                  <Button
-                    variant="link"
-                    className="text-indigo-400 hover:text-indigo-300"
-                  >
-                    <Link href={project.liveLink} target="_blank">
-                      Live Link
-                    </Link>
-                  </Button>
-                  <Button variant="ghost">
-                    <Link href={project.githubLink} target="_blank">
-                      <Github />
-                    </Link>
-                  </Button>
+                  <div className="flex gap-2">
+                    <Button
+                      variant="link"
+                      className="text-sm text-indigo-400 hover:text-indigo-300 sm:text-base touch-manipulation"
+                    >
+                      <Link href={project.liveLink} target="_blank">
+                        Live Link
+                      </Link>
+                    </Button>
+                    <Button variant="ghost" className="touch-manipulation">
+                      <Link href={project.githubLink} target="_blank">
+                        <Github />
+                      </Link>
+                    </Button>
+                  </div>
                 </div>
-                <p className="mt-3 leading-relaxed text-zinc-300">
+                <p className="mt-3 text-sm leading-relaxed text-zinc-300 sm:text-base">
                   {project.description}
                 </p>
                 <div className="flex flex-wrap gap-2 mt-4">
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-3 py-1 text-xs transition-all duration-300 rounded-full bg-zinc-800 text-zinc-300 hover:bg-indigo-500/20"
+                      className="px-2 py-1 text-xs transition-all duration-300 rounded-full sm:px-3 bg-zinc-800 text-zinc-300 hover:bg-indigo-500/20"
                     >
                       {tag}
                     </span>
@@ -351,25 +359,43 @@ export default function Portfolio() {
   };
 
   return (
-    <div className="min-h-screen font-sans bg-gradient-to-b from-black to-zinc-900 text-zinc-300">
-      <div className="max-w-6xl px-4 py-16 mx-auto md:py-24 md:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-[250px_1fr] gap-8">
+    <div className="min-h-screen overflow-x-hidden font-sans bg-gradient-to-b from-black to-zinc-900 text-zinc-300">
+      <div className="max-w-6xl px-4 py-12 mx-auto sm:py-16 md:py-24 sm:px-6 md:px-8">
+        {/* Mobile Navigation Toggle */}
+        <div className="flex items-center justify-between mb-6 md:hidden">
+          <h2 className="text-2xl font-bold text-white">Portfolio</h2>
+          <Button
+            variant="ghost"
+            onClick={toggleMobileMenu}
+            className="text-white hover:text-indigo-400 touch-manipulation"
+            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </Button>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-[250px_1fr] gap-6 md:gap-8">
           {/* Navigation */}
           <motion.nav
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: isLoaded ? 1 : 0, x: isLoaded ? 0 : -20 }}
             transition={{ duration: 0.5 }}
-            className="sticky space-y-4 top-24"
+            className={`${
+              isMobileMenuOpen ? "block" : "hidden"
+            } md:block sticky top-24 space-y-4 bg-zinc-900/80 backdrop-blur-sm md:bg-transparent p-4 md:p-0 rounded-lg md:rounded-none z-10`}
           >
             {navItems.map((item) => (
               <motion.button
                 key={item.id}
-                onClick={() => setActiveSection(item.id)}
-                className={`block text-left text-xl font-medium transition-all duration-300 ${
+                onClick={() => {
+                  setActiveSection(item.id);
+                  setIsMobileMenuOpen(false);
+                }}
+                className={`block text-left text-lg sm:text-xl font-medium transition-all duration-300 w-full text-left ${
                   activeSection === item.id
                     ? "text-indigo-400 border-l-4 border-indigo-500 pl-2"
                     : "text-zinc-500 hover:text-indigo-300 hover:pl-2"
-                }`}
+                } touch-manipulation`}
                 whileHover={{ x: 5 }}
               >
                 {item.label}
@@ -378,7 +404,7 @@ export default function Portfolio() {
           </motion.nav>
 
           {/* Main Content */}
-          <div className="space-y-8">
+          <div className="space-y-6 md:space-y-8">
             <div className="min-h-[400px]">{renderContent()}</div>
           </div>
         </div>
